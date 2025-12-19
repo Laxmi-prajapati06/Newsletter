@@ -1,14 +1,14 @@
-📧 Django Consultation & Newsletter System
+📧 Django Consultation & Newsletter System  
 A robust web application built with Django and Tailwind CSS. This system allows users to sign up for newsletters and book free in-center consultations, while providing administrators with a powerful, automated dashboard to manage leads.
 
-🌟 Key Features
+🌟 Key Features  
 Tailwind-Powered Frontend: A modern, mobile-responsive "In-Center Consultation" booking section.
 
 Automated Admin Panel: Leveraging Django’s built-in /admin to manage subscribers and leads with zero extra frontend code.
 
 Database Integration: Securely stores consultation requests and email subscriptions in a relational database.
 
-🛠 Tech Stack
+🛠 Tech Stack  
 Backend: Django 5.x (Python)
 
 Frontend: Tailwind CSS 
@@ -25,7 +25,7 @@ Pip (Python package manager)
 2. Installation
 
 # Clone the repository
-git clone https://github.com/yourusername/django-newsletter.git
+git clone https://github.com/Laxmi-prajapati06/Newsletter/
 cd django-newsletter
 
 # Create and activate virtual environment
