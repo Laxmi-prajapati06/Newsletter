@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="bg-blue-600 text-white py-4 px-8 flex flex-col md:flex-row justify-between items-center">
+    <nav class="flex space-x-6 mb-4 md:mb-0">
+        <a href="#" class="hover:text-gray-200">Home</a>
+        <a href="#" class="hover:text-gray-200">Services</a>
+        <a href="#projects" class="hover:text-gray-200">Projects</a>
+        <a href="#" class="hover:text-gray-200">Testimonials</a>
+        <a href="#contact" class="hover:text-gray-200">Contact</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+        <span class="font-bold">Subscribe Us</span>
+        <form method="POST" class="flex">
+            {% csrf_token %}
+            <input type="hidden" name="subscribe" value="1">
+            <input type="email" name="email" placeholder="Enter Email Address" class="bg-blue-600 flex-1 p-3 border rounded-l" required> <button type="submit" class="bg-white text-blue-600 px-4 py-2 rounded-r-md font-bold hover:bg-gray-100">SUBSCRIBE</button>
+        </form>
+    </div>
+    </div>
+    {% if messages %}
+    <div class="fixed top-4 right-4 z-50">
+        {% for message in messages %}
+            <div class="p-4 mb-4 text-white rounded shadow-lg {% if message.tags == 'success' %}bg-green-500{% else %}bg-red-500{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <header class="relative h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('https://www.ikonmarket.com/assets/images/marketing-consultant.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl font-bold mb-4">Not Your Average Realtor</h1>
+            <p class="text-xl mb-8">Consultation, Design & Marketing</p>
+            <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-semibold">Get a Free Consultation</a>
+        </div>
+    </header>
+
+    <section id="projects" class="py-16 px-8 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for project in projects %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="{{ project.image.url }}" alt="{{ project.name }}" class="w-full h-48 object-cover"> <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2">{{ project.name }}</h3> <p class="text-gray-600 mb-4">{{ project.description }}</p> <button class="text-blue-600 font-semibold hover:underline">READ MORE</button> </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-16 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Happy Clients</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                {% for client in clients %}
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <img src="{{ client.image.url }}" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-blue-500"> <p class="italic text-gray-500 text-sm mb-4">"{{ client.description }}"</p> <h4 class="font-bold text-blue-600">{{ client.name }}</h4> <p class="text-xs text-gray-400">{{ client.designation }}</p> </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 px-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <div class="bg-blue-900 p-8 rounded-lg text-white">
+                <h3 class="text-2xl font-bold mb-6 text-center">Get a Free Consultation</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="contact_submit" value="1">
+                    <input type="text" name="full_name" placeholder="Full Name" class="w-full p-3 mb-4 rounded text-black" required> <input type="email" name="email" placeholder="Enter Email Address" class="w-full p-3 mb-4 rounded text-black" required> <input type="text" name="mobile" placeholder="Mobile Number" class="w-full p-3 mb-4 rounded text-black" required> <input type="text" name="city" placeholder="Area, City" class="w-full p-3 mb-6 rounded text-black" required> <button type="submit" class="w-full bg-orange-500 py-3 rounded font-bold hover:bg-orange-600">GET QUICK QUOTE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8 text-center">
+        <p>&copy; 2024 Real Estate Agency. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
