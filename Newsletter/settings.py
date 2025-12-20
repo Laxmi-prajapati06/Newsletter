@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-@#zlob&xab(ip4c4$_k^w9md78w&y#rin%kt^i-k-ea$6l%=e_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['newsletter-v31d.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+# Render sets this variable automatically on their servers
+render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if render_external_hostname:
+    ALLOWED_HOSTS.append(render_external_hostname)
 
 
 # Application definition
