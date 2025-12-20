@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@#zlob&xab(ip4c4$_k^w9md78w&y#rin%kt^i-k-ea$6l%=e_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Newsletter.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['newsletter-v31d.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
